@@ -8,9 +8,6 @@ What does the web app use:
 -barcodewriter and uuid to generate a barcode
 -flask mail to send emails
 -mailtrap sandbox smtp server to send emails
-    Note: In my web app the smtp server i have used is a demo server, below i will provide the login details if you wish to test my web app and the smtp server
-    E-mail: coursework.mail.test@gmail.com
-    Password: courseworkmailtest
 
 How the web app works:
 -when registering, the app generates a random code and sends it to the email address provided in the form and then redirects you to the email verification template
