@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+    <div class="navbar">
+        <h3 class="website-name">EventByte!</h3>
+        <div class="navbar-links">
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('user_events') }}">Your Tickets</a>
+            <a href="{{ url_for('events') }}">Events</a>
+            {% if current_user.username == 'ani' %}
+                <a href="{{ url_for('admin_transaction_log') }}">Transaction Log</a>
+                <a href="{{ url_for('create_event') }}">Create Event</a>
+            {% endif %}
+        </div>
+      </div>
+        <h1 class="tickets">Your Tickets</h1>
+    <div class="event-list">
+        {% for ticket in tickets %}
+        <div class="event-item">
+            <h3>Event: {{ ticket.event.title }}</h3>
+            <p>Location: {{ ticket.event.location }}</p>
+            <p>Date: {{ ticket.event.date }}</p>
+            <p>Duration: {{ ticket.event.duration }}</p>
+            <p>Barcode: {{ ticket.barcode }}</p>
+            <form action="{{ url_for('cancel_ticket', ticket_id=ticket.id) }}" method="post">
+                <button type="submit" class="button" >Cancel Ticket</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>

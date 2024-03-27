@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Transaction Log</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body>
+{% block content %}
+<div class="navbar">
+    <h3 class="website-name">EventByte!</h3>
+    <div class="navbar-links">
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('user_events') }}">Your Tickets</a>
+        <a href="{{ url_for('events') }}">Events</a>
+        {% if current_user.username == 'ani' %}
+            <a href="{{ url_for('admin_transaction_log') }}">Transaction Log</a>
+            <a href="{{ url_for('create_event') }}">Create Event</a>
+        {% endif %}
+    </div>
+  </div>
+    <h1>Admin Transaction Log</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Date & Time</th>
+                <th>User</th>
+                <th>Action</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in transactions %}
+            <tr>
+                <td>{{ entry.timestamp }}</td>
+                <td>{{ entry.user.username }}</td>
+                <td>{{ entry.action }}</td>
+                <td>{{ entry.details }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+</body>
+</html>

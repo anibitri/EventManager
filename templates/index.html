@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<body class="index">
+
+    <div class="split-container"> 
+        <div class="split-left"> 
+            <h1>EventByte!</h1> 
+            <p>Welcome to EventByte!
+                <br> Login or Register to get your ticket to any event
+            </p> 
+        </div> 
+        <div class="split-right"> 
+            <div class="links">
+                <a class="register" href="{{ url_for('register') }}">Register</a><br>
+                <a class="login" href="{{ url_for('login') }}">Login</a>  
+            </div>
+        </div> 
+    </div> 
+
+</body>
+</html>
